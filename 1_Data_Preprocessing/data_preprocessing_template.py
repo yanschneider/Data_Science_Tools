@@ -4,9 +4,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
 # Importing the dataset
-dataset = pd.read_csv('Data.csv')
+dataset = pd.read_csv('Data.csv',delimiter=',')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 
@@ -39,13 +41,11 @@ le = LabelEncoder()
 y = le.fit_transform(y)
 
 # Splitting the dataset into the Training set and Test set
-from sklearn.model_selection import train_test_split
 #split into train and text matrices and arrays
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 
 # applying standardization (scale from 0 to 1)
-from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 
 # 3 is the number of categories
