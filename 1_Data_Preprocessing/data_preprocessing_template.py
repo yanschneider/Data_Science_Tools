@@ -52,7 +52,8 @@ sc = StandardScaler()
 # fit will get mean and std dev - transform will calculate values betwenn 0 and 1 from this
 X_train[:,3:] = sc.fit_transform(X_train[:,3:])
 
-
+# we need to scale the test data with the same scaler used for the train data
+X_test[:,3:] = sc.transform(X_test[:,3:])
 
 
 
