@@ -7,6 +7,9 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+
 # Importing the dataset
 dataset = pd.read_csv('Data.csv',delimiter=',')
 X = dataset.iloc[:, :-1].values
@@ -24,8 +27,6 @@ imputer.fit(X[:, 1:3])
 X[:,1:3] = imputer.transform(X[:,1:3])
 
 # categorizing data and one hot encoding
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
 
 # specifiy what to do, the type of encoder, the column that is encoded and what to do with the other columns
 ct = ColumnTransformer(transformers=[('encoder',OneHotEncoder(),[0])], remainder='passthrough')
